@@ -1,0 +1,5 @@
+cassandra:
+  db_id: ee7ea298-8259-4c37-8d7f-d7ebf951e966
+  region: us-east1
+  keyspace: main
+  token: <token>
