@@ -1,0 +1,5 @@
+cassandra:
+  db_id: sample_id
+  region: sample_region
+  keyspace: sample_keyspace
+  token: sample_token
