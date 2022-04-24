@@ -4,3 +4,5 @@ simplejson==3.17.2
 pyyaml
 pytest
 pytest-mock==3.7.0
+flask
+jsonpickle

@@ -6,14 +6,13 @@ astra_db_keyspace = ''
 
 
 def connect_to_db():
-    db_config = src.util.read_config('config.yml')
+    db_config = src.util.read_config('../config.yml')
     astra_db_id = db_config["cassandra"]["db_id"]
     astra_db_region = db_config["cassandra"]["region"]
     astra_db_application_token = db_config["cassandra"]["token"]
     global astra_db_keyspace
     astra_db_keyspace = db_config["cassandra"]["keyspace"]
-    client = get_client(astra_db_id, astra_db_region, astra_db_application_token)
-    add_data_to_db(client)
+    return get_client(astra_db_id, astra_db_region, astra_db_application_token)
 
 
 def add_data_to_db(client):
@@ -28,6 +27,24 @@ def add_data_to_db(client):
             "author": "Suzanne Collins1",
             "genre": ["fiction"],
         }
+    )
+
+
+def get_book_by_id(book_id):
+    collection_name = "demo_book"
+    client = connect_to_db()
+    return client.request(
+        http_methods.GET,
+        path=f"/api/rest/v2/namespaces/{astra_db_keyspace}/collections/{collection_name}/{book_id}",
+    )
+
+
+def get_all_book_from_db():
+    collection_name = "demo_book"
+    client = connect_to_db()
+    return client.request(
+        http_methods.GET,
+        path=f"/api/rest/v2/namespaces/{astra_db_keyspace}/collections/{collection_name}"
     )
 
 
