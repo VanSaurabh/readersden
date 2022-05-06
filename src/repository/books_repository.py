@@ -1,6 +1,10 @@
+import json
+
 from astrapy.rest import create_client, http_methods
 import src.util
 import uuid
+from src.model import book, book_by_id_response
+
 
 astra_db_keyspace = ''
 
@@ -15,28 +19,16 @@ def connect_to_db():
     return get_client(astra_db_id, astra_db_region, astra_db_application_token)
 
 
-def add_data_to_db(client):
-    collection_name = "demo_book"
-    doc_uuid = uuid.uuid4()
-
-    client.request(
-        http_methods.PUT,
-        path=f"/api/rest/v2/namespaces/{astra_db_keyspace}/collections/{collection_name}/{doc_uuid}",
-        json_data={
-            "book": "The Hunger Games1",
-            "author": "Suzanne Collins1",
-            "genre": ["fiction"],
-        }
-    )
-
-
 def get_book_by_id(book_id):
     collection_name = "demo_book"
     client = connect_to_db()
-    return client.request(
+    book_json = client.request(
         http_methods.GET,
         path=f"/api/rest/v2/namespaces/{astra_db_keyspace}/collections/{collection_name}/{book_id}",
     )
+    book_by_id = book_by_id_response.get_book_data_from_dict(book_json)
+    response = book.get_book_data_from_dict(book_by_id.data)
+    return json.dumps(response.__dict__)
 
 
 def get_all_book_from_db():
@@ -45,6 +37,18 @@ def get_all_book_from_db():
     return client.request(
         http_methods.GET,
         path=f"/api/rest/v2/namespaces/{astra_db_keyspace}/collections/{collection_name}"
+    )
+
+
+def save_book(book):
+    collection_name = "demo_book"
+    doc_uuid = uuid.uuid4()
+    client = connect_to_db()
+
+    client.request(
+        http_methods.PUT,
+        path=f"/api/rest/v2/namespaces/{astra_db_keyspace}/collections/{collection_name}/{doc_uuid}",
+        json_data=book
     )
 
 

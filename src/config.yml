@@ -2,4 +2,4 @@ cassandra:
   db_id: ee7ea298-8259-4c37-8d7f-d7ebf951e966
   region: us-east1
   keyspace: main
-  token: <token>
+  token: AstraCS:cgJzkPUPLIJsHWARmyiSrrUr:3e229b71eca344c01dc8c3b2ceba9afa8f3cfadf78ee060058c51ae23415656b

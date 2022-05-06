@@ -7,3 +7,7 @@ def get_all_books():
 
 def get_book_by_id(book_id):
     return books_repository.get_book_by_id(book_id)
+
+
+def add_book(data):
+    books_repository.save_book(data)
