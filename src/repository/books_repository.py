@@ -27,7 +27,7 @@ def get_book_by_id(book_id):
         path=f"/api/rest/v2/namespaces/{astra_db_keyspace}/collections/{collection_name}/{book_id}",
     )
     book_by_id = book_by_id_response.get_book_data_from_dict(book_json)
-    response = book.get_book_data_from_dict(book_by_id.data)
+    response = book.get_book_data_from_json(book_by_id.data)
     return json.dumps(response.__dict__)
 
 
@@ -40,7 +40,7 @@ def get_all_book_from_db():
     )
 
 
-def save_book(book):
+def save_book(book_data):
     collection_name = "demo_book"
     doc_uuid = uuid.uuid4()
     client = connect_to_db()
@@ -48,7 +48,7 @@ def save_book(book):
     client.request(
         http_methods.PUT,
         path=f"/api/rest/v2/namespaces/{astra_db_keyspace}/collections/{collection_name}/{doc_uuid}",
-        json_data=book
+        json_data=book_data
     )
 
 
