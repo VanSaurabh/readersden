@@ -66,7 +66,7 @@ def test_connect_to_db(mocker):
 
 
 def common_mock(mocker):
-    mocker.patch('src.util.read_config',
+    mocker.patch('src.util.util.read_config',
                  return_value=
                  {
                      "cassandra":

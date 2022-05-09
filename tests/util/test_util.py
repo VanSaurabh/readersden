@@ -1,4 +1,4 @@
-from src.util import read_config
+from src.util.util import read_config
 
 
 def test_read_config():

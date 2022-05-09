@@ -10,7 +10,7 @@ astra_db_keyspace = ''
 
 
 def connect_to_db():
-    db_config = src.util.read_config('../config.yml')
+    db_config = src.util.util.read_config('../config.yml')
     astra_db_id = db_config["cassandra"]["db_id"]
     astra_db_region = db_config["cassandra"]["region"]
     astra_db_application_token = db_config["cassandra"]["token"]
