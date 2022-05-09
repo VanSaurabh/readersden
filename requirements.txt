@@ -1,9 +1,9 @@
 cassandra-driver==3.25.0
 astrapy==0.0.2
 simplejson==3.17.2
-pyyaml
+pyyaml~=6.0
 pytest
 pytest-mock==3.7.0
-flask
+flask~=2.1.1
 jsonpickle
 dataclasses-json
