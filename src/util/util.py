@@ -10,4 +10,3 @@ def read_config(file):
                 raise ValueError('config.yml is invalid !')
     except IOError:
         raise IOError('got error while opening config.yml file !')
-

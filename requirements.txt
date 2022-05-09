@@ -7,3 +7,5 @@ pytest-mock==3.7.0
 flask~=2.1.1
 jsonpickle
 dataclasses-json
+PyJWT==1.7.1
+Werkzeug~=2.1.1

@@ -3,3 +3,7 @@ cassandra:
   region: us-east1
   keyspace: main
   token: AstraCS:cgJzkPUPLIJsHWARmyiSrrUr:3e229b71eca344c01dc8c3b2ceba9afa8f3cfadf78ee060058c51ae23415656b
+
+jwt:
+  token:
+    secret: 'JWTNotUseInProduction!'
