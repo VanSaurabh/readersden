@@ -32,4 +32,6 @@ jobs:
         docker build .
     - name: Run Coverage
       run: |
-        coverage html
+        coverage run -m pytest
+    - name: Publish coverage report
+      run: coverage html
