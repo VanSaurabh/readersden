@@ -16,7 +16,7 @@ def connect_to_db():
     return get_client(astra_db_id, astra_db_region, astra_db_application_token)
 
 
-def add_user(user_data):
+def add_user_to_db(user_data):
     collection_name = "user_repo"
     doc_uuid = uuid.uuid4()
     client = connect_to_db()
@@ -28,7 +28,7 @@ def add_user(user_data):
     )
 
 
-def get_all_users():
+def get_all_users_from_db():
     collection_name = "user_repo"
     client = connect_to_db()
     return client.request(

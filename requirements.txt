@@ -9,3 +9,4 @@ jsonpickle
 dataclasses-json
 PyJWT==1.7.1
 Werkzeug~=2.1.1
+coverage~=6.3.2
