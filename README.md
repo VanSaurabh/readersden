@@ -25,3 +25,9 @@ pip3 -v
 ```sh
 pip3 install -r requirements.txt
 ```
+
+### check code coverage
+```shell
+coverage run -m pytest
+coverage html
+```

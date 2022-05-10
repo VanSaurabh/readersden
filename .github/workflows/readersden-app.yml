@@ -30,3 +30,6 @@ jobs:
     - name: Build docker image
       run: |
         docker build .
+    - name: Run Coverage
+      run: |
+        coverage html
