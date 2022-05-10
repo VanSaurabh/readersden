@@ -34,4 +34,6 @@ jobs:
       run: |
         coverage run -m pytest
     - name: Publish coverage report
-      run: coverage html
+      run: |
+        coverage json
+        echo "${{fromJson(../../coverage.json).totals.percent_covered_display}}"
