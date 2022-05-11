@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from functools import wraps
 
 import jwt
 from flask import request
@@ -35,6 +36,7 @@ def prepare_token(username):
 
 
 def token_verifier(func):
+    @wraps(func)
     def verify_jwt(*args, **kwargs):
         token = request.headers.get('X-Access-Token')
         if token is None:
@@ -56,7 +58,7 @@ def token_verifier(func):
 def check_valid_user(user_id):
     user = user_service.get_user_by_username(user_id)
     if user is None:
-        return {'error': 'Invalid token !'}, 401, {'Content-Type': 'application/json'}
+        raise Exception
 
 
 def get_jwt_secret():
