@@ -1,5 +1,7 @@
 from flask import Flask
+
 from src.controller import books_controller, login_controller, user_controller
+from src.util import util
 
 app = Flask(__name__)
 
@@ -23,4 +25,5 @@ app.add_url_rule('/users/<user_id>', view_func=user_controller.get_user_by_id, m
 
 
 if __name__ == '__main__':
+    util.startup()
     app.run()

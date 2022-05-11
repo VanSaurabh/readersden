@@ -7,3 +7,4 @@ cassandra:
 jwt:
   token:
     secret: 'JWTNotUseInProduction!'
+    expiration: 5

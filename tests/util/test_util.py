@@ -1,6 +1,6 @@
 from astrapy.rest import AstraClient
 
-from src.util.util import read_config, get_client, connect_to_db
+from src.util.util import get_client, connect_to_db, read_config
 
 
 def test_read_config():
@@ -22,7 +22,7 @@ def test_get_client(mocker):
 
 
 def test_connect_to_db(mocker):
-    mocker.patch('src.util.util.read_config',
+    mocker.patch('src.util.util.get_config',
                  return_value=
                  {
                      "cassandra":

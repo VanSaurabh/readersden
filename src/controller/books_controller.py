@@ -1,7 +1,10 @@
 from flask import request
+
 from src.service import books_service
+from src.service.login_service import token_verifier
 
 
+@token_verifier
 def hello_world():
     """
         a sample endpoint to test flask
