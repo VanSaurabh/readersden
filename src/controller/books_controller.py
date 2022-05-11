@@ -12,6 +12,7 @@ def hello_world():
     return 'The world is my territory !!', 200, {'Content-Type': 'application/json'}
 
 
+@token_verifier
 def get_all_books():
     """
         the endpoint returns all the books from db
@@ -20,6 +21,7 @@ def get_all_books():
     return books_service.get_all_books(), 200, {'Content-Type': 'application/json'}
 
 
+@token_verifier
 def get_book_by_id(book_id):
     """
         the endpoint returns book details by id
@@ -27,6 +29,7 @@ def get_book_by_id(book_id):
     return books_service.get_book_by_id(book_id), 200, {'Content-Type': 'application/json'}
 
 
+@token_verifier
 def add_books():
     """
         the endpoint adds a book to the database
